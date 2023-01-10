@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="d-flex justify-content-center m-3">
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand text-info border-info"><h1> &#127791 Recipes &#127791 </h1></a>
+    </div>
+    <h1 class="text-center">Hello {{user.first_name}} {{user.last_name}}</h1>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Posted By</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in recipes %}
+                <tr>
+                    <td>{{ x.name }}</td>
+                    <td>{{ x.description }}</td>
+                    <td>{{ x.creator.first_name }}</td>
+                    <td class="text-center">
+                        <a href="/show_recipe/{{ x.id }}" class="btn btn-dark">View</a>
+                        {% if x.creator.id == session.user_id %}
+                        <a href="/edit_recipe/{{ x.id }}" class="btn btn-dark">Edit</a>
+                        <a href="/delete_recipe/{{ x.id }}" class="btn btn-dark">Delete</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="/logout" class="btn btn-dark">Logout</a>
+    <a href="/create_recipe_page" class="btn btn-dark">Create New</a>
+</body>
+</html>

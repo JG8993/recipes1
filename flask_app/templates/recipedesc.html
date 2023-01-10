@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title></title>
+</head>
+<body>
+    <div class="d-flex justify-content-center m-3">
+        <nav class="navbar navbar-dark bg-dark rounded">
+        <a class="navbar-brand text-info border-info"><h1> &#127791 Recipes &#127791 </h1></a>
+    </div>
+    <div>
+    <h1 class="card-title text-center">Welcome {{user.first_name}}</h1>
+    </div>
+    <div class="card text-center" style="width: 25rem;">
+        <h2>{{recipes.name}}</h2>
+        <h5>Posted By: {{ recipes.creator }}</h5>
+        <div class="card-body">
+          <p> Description: {{recipes.description}}</p>
+          <p> Instructions: {{recipes.instructions}}</p>
+          <a href="/success" value="Go back" class="btn btn-dark">Go back</a>
+        </div>
+    </div>
+</body>
+</html>
